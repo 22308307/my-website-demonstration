@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Our Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Contact us</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contact">
+        <div class="container">
+            <h2>Contact us.</h2>
+            <p>Do you have any questions or suggestions? Please do not hesitate to contact us..</p>
+            
+            <div class="contact-info">
+                <div class="contact-method">
+                    <h3>Email</h3>
+                    <p>contact@oursite.com</p>
+                </div>
+                <div class="contact-method">
+                    <h3>PhoneNumber</h3>
+                    <p>+90 533 877 95 83</p>
+                </div>
+                <div class="contact-method">
+                    <h3>Adresse</h3>
+                    <p>123 Example Street
+                        Lefkoşa<br>Nicosia, 99400<br>Northern Cyprus</p>
+                </div>
+            </div>
+            
+            <div class="map">
+                <!-- Ici vous pourriez intégrer une carte Google Maps ou autre -->
+                <div class="map-placeholder">
+                    <p>Access map to our offices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - Our Website.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

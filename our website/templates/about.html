@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Our Site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>About our team</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}" class="active">About</a></li>
+                    <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="team">
+        <div class="container">
+            <h2>Our team</h2>
+            <p>Meet the members of our passionate team.</p>
+            
+            <div class="team-members">
+                {% for member in team %}
+                <div class="member">
+                    <div class="member-photo">
+                        <img src="{{ url_for('static', filename='img/' + member.photo) }}" alt="{{ member.name }}">
+                    </div>
+                    <h3>{{ member.name }}</h3>
+                    <p class="role">{{ member.role }}</p>
+                    <p class="hobbies"><strong>Hobbies:</strong> {{ member.hobbies }}</p>
+                    <p class="email">{{ member.email }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="container">
+            <h2>Our values</h2>
+            <div class="values-grid">
+                <div class="value">
+                    <h3>Collaboration</h3>
+                    <p>We believe in the power of teamwork and open communication.</p>
+                </div>
+                <div class="value">
+                    <h3>Innovation</h3>
+                    <p>We are constantly looking for new ways to improve our processes and solutions.</p>
+                </div>
+                <div class="value">
+                    <h3>Simplicity.</h3>
+                    <p>We develop simple but effective tools to make your daily work easier.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - Our Website</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

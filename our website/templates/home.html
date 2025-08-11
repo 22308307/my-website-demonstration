@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Our Site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome on our site</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Simplify your teamwork</h2>
+            <p>A simple platform to share links and collaborate effectively.</p>
+            <a href="{{ url_for('tasks') }}" class="btn">Start now</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature-box">
+                <div class="feature">
+                    <h3>Share links</h3>
+                    <p>Easily save important links for your team.</p>
+                </div>
+                <div class="feature">
+                    <h3>Stay informed.</h3>
+                    <p>Receive a weekly summary by email.</p>
+                </div>
+                <div class="feature">
+                    <h3>Work together</h3>
+                    <p>Collaborate effectively with your team on your projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy;2025 - Our Website</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

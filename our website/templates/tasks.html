@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks - Our Site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Link Manager</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('tasks') }}" class="active">Tasks</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="tasks">
+        <div class="container">
+            <h2>Add a new link</h2>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <div class="form-container">
+                <form action="{{ url_for('tasks') }}" method="POST">
+                    <div class="form-group">
+                        <label for="link_url">Link URL:</label>
+                        <input type="url" id="link_url" name="link_url" required placeholder="https://exemple.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" name="description"  placeholder="Describe this Link">
+                    </div>
+                    <button type="submit" class="btn">Add link</button>
+                </form>
+            </div>
+            
+            <h2>Saved links</h2>
+            <div class="links-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>URL</th>
+                            <th>Date added</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if links %}
+                            {% for link in links %}
+                                <tr>
+                                    <td>{{ link.description }}</td>
+                                    <td><a href="{{ link.url }}" target="_blank">{{ link.url }}</a></td>
+                                    <td>{{ link.date_added }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="3" class="no-links">No links saved yet.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info-box">
+                <h3>About Email Reminders</h3>
+                <p>Every Monday at 8am, a summary email with all the links will be automatically sent to all team members.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - Our Website</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
